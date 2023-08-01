@@ -98,14 +98,14 @@ const questions = [
 
 const quizForm = $('#quizForm');
 const questionHtml = questions.map(q=>{
-  return `<div class="question"
+  return `<div class="question">
   <h3>${q.title}</h3>
-  <div class="choices>"
+  <div class="choices">
   ${q.options.map(option=> `
   <div class="choice">
   <label for="choice${q.id}${option.key}">${option.title}</label>
   <input type="radio" name="question${q.id}" id="choice${q.id}${option.key}" value="${option.key}"/>
-  </div>`}
+  </div>`)
   .join('')}
     </div>
   </div>

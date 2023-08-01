@@ -112,3 +112,26 @@ const questionHtml = questions.map(q=>{
   `;
 });
 quizForm.html(questionHtml.join('')+`<button type="submit">ثبت</button>`);
+
+quizForm.submit(event=>{
+  event.preventDefault();
+  let rightAnswers = 0;
+  let wrongAnswers = 0;
+  let emptyAnswers = 0;
+
+  questions.forEach(question=>{
+    const radioValue = $(`input[name="question${question.id}"]:checked]`).val();
+    if(radioValue){
+        if(radioValue == question.answerKey){
+          rightAnswers += 1;
+        }else{
+          wrongAnswers += 1;
+        }
+    }else{
+      emptyAnswers += 1;
+    }
+  });
+$('#rightAnswers').html(rightAnswers);
+$('#wrongAnswers').html(wrongAnswers);
+$('#emptyAnswers').html(emptyAnswers);
+});

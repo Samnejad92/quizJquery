@@ -103,8 +103,8 @@ const questionHtml = questions.map(q=>{
   <div class="choices">
   ${q.options.map(option=> `
   <div class="choice">
-  <label for="choice${q.id}${option.key}">${option.title}</label>
-  <input type="radio" name="question${q.id}" id="choice${q.id}${option.key}" value="${option.key}"/>
+  <label for="choice${q.id}">${option.title}</label>
+  <input type="radio" name="question${q.id}" id="choice${q.id}" value="${option.key}"/>
   </div>`)
   .join('')}
     </div>
@@ -120,7 +120,7 @@ quizForm.submit(event=>{
   let emptyAnswers = 0;
 
   questions.forEach(question=>{
-    const radioValue = $(`input[name="question${question.id}"]:checked]`).val();
+    const radioValue = $(`input[name="question${question.id}"]:checked`).val();
     if(radioValue){
         if(radioValue == question.answerKey){
           rightAnswers += 1;
